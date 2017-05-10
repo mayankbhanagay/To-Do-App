@@ -1,0 +1,26 @@
+
+
+.list{
+	
+	 
+	 background-color: #ffcc00 ;
+	 text-align: center;
+	 height: 100%;
+	 width: 100%;
+	 font-size:50px;
+	 text-shadow: 2px 2px ;
+	 font-family: 'Nova Oval', cursive;
+
+}
+
+ul{
+
+	list-style:none;
+
+}
+li:hover{
+	background-color: yellow;
+}
+h1{
+	font-size: 100px;
+}

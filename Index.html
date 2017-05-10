@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>To do app</title>
+
+<script src="https://fb.me/react-15.2.1.js"></script>
+<script src="https://fb.me/react-dom-15.2.1.js"></script>
+
+<script src ="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.js"></script>
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<link rel="stylesheet" type="text/css" href="style.css">
+
+
+</head>
+
+<body>
+
+<div id='react-container'></div>
+
+<script type="text/babel">
+
+class Todo extends React.Component {
+    
+    constructor(props) {
+      super(props);
+      this.state={todos:[]};
+    }
+    
+    save() {
+      var todos = [...this.state.todos];
+      todos.push(this.newText.value);
+      this.setState({todos});
+    }
+
+    remove(value) {
+      let todos = this.state.todos.slice();
+      todos.splice(todos.indexOf(value),1);
+      this.setState({todos});
+    }
+
+
+    render(){
+        return(
+            <div className="list">
+              <h1> TO-DO List</h1>
+              <input type="text" ref={(ip) => {this.newText = ip}}/>
+              <button onClick={this.save.bind(this)} className="btn btn-primary glyphicon glyphicon-floppy-saved">Save
+              </button>
+              <ul>
+                {this.state.todos.map((todo) => {
+                      return <li onClick={this.remove.bind(this, todo)}>{todo}</li>
+
+                 })}
+                
+              </ul>
+            </div>
+        )
+    }
+};
+
+ReactDOM.render(<Todo/>, document.getElementById('react-container'));
